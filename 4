@@ -1,0 +1,21 @@
+public class PrintArray {
+    public static void main(String[] args) {
+        // 创建一个二维数组
+        int[][] matrix = new int[3][3];
+
+        // 在二维数组中插入随机值（0 - 19）
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                matrix[row][column] = (int) (Math.random() * 20);
+            }
+        }
+
+        // 打印二维数组
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                System.out.print(matrix[row][column] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
