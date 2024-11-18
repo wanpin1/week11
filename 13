@@ -1,0 +1,53 @@
+public class LargestRowAndColumn {
+    public static void main(String[] args) {
+        int[][] matrix = new int[4][4];
+
+        // 随机填充0和1到矩阵
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                matrix[i][j] = (int) (Math.random() * 2);
+            }
+        }
+
+        // 打印矩阵
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // 找到具有最多1的行
+        int maxRowOnes = 0;
+        int maxRowIndex = 0;
+        for (int i = 0; i < 4; i++) {
+            int rowOnes = 0;
+            for (int j = 0; j < 4; j++) {
+                if (matrix[i][j] == 1) {
+                    rowOnes++;
+                }
+            }
+            if (rowOnes > maxRowOnes) {
+                maxRowOnes = rowOnes;
+                maxRowIndex = i;
+            }
+        }
+
+        // 找到具有最多1的列
+        int maxColumnOnes = 0;
+        int maxColumnIndex = 0;
+        for (int j = 0; j < 4; j++) {
+            int columnOnes = 0;
+            for (int i = 0; i < 4; i++) {
+                if (matrix[i][j] == 1) {
+                    columnOnes++;
+                }
+            }
+            if (columnOnes > maxColumnOnes) {
+                maxColumnOnes = columnOnes;
+                maxColumnIndex = j;
+            }
+        }
+
+        System.out.println("The largest row index: " + maxRowIndex);
+        System.out.println("The largest column index: " + maxColumnIndex);
