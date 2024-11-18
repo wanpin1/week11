@@ -1,0 +1,30 @@
+public class RandomShuffling {
+    public static void main(String[] args) {
+        // 使用数组初始化器初始化数组
+        int[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        // 为行和列生成随机索引并交换元素
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                int i1 = (int) (Math.random() * matrix.length);
+                int j1 = (int) (Math.random() * matrix[row].length);
+                int temp = matrix[row][column];
+                matrix[row][column] = matrix[i1][j1];
+                matrix[i1][j1] = temp;
+            }
+        }
+
+        // 打印随机打乱后的数组
+        System.out.println("Array after shuffling: ");
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                System.out.print(matrix[row][column] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
