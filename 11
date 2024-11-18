@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+public class ComputeWeeklyHours {
+    public static void main(String[] args) {
+        int[][] hours = {
+                {2, 4, 3, 5, 8, 8, 7},
+                {3, 4, 3, 4, 4, 5, 4},
+                {3, 3, 3, 3, 2, 2, 3},
+                {9, 3, 4, 7, 4, 1, 7},
+                {3, 5, 3, 6, 3, 8, 4},
+                {3, 4, 4, 6, 3, 4, 5},
+                {7, 4, 8, 3, 8, 3, 7},
+                {3, 5, 7, 6, 9, 2, 9}
+        };
+
+        int[] totalHours = new int[hours.length];
+        for (int i = 0; i < hours.length; i++) {
+            for (int j = 0; j < hours[i].length; j++) {
+                totalHours[i] += hours[i][j];
+            }
+        }
+
+        // 对员工索引按照总小时数降序排序
+        Integer[] indices = new Integer[totalHours.length];
+        for (int i = 0; i < totalHours.length; i++) {
+            indices[i] = i;
+        }
+        Arrays.sort(indices, (a, b) -> totalHours[b] - totalHours[a]);
+
+        // 输出员工和他们的总小时数（降序）
+        for (int i : indices) {
+            System.out.println("Employee " + i + " total hours: " + totalHours[i]);
+        }
+    }
+}
