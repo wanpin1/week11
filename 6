@@ -1,0 +1,36 @@
+public class Row_LargestSum {
+    public static void main(String[] args) {
+        int[][] matrix = new int[3][3];
+
+        // 在二维数组中插入随机值（0 - 19）
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[0].length; column++) {
+                matrix[row][column] = (int) (Math.random() * 20);
+            }
+        }
+
+        // 跟踪最大总和和行索引
+        int maxOfRow = 0;
+        int indexOfMaxRow = 0;
+        int totalOfThisRow = 0;
+
+        // 计算第0行的总和
+        for (int column = 0; column < matrix[0].length; column++) {
+            totalOfThisRow += matrix[0][column];
+        }
+        maxOfRow = totalOfThisRow;
+
+        // 获取其他行的总和并与maxOfRow进行比较
+        for (int row = 1; row < matrix.length; row++) {
+            totalOfThisRow = 0;
+            for (int column = 0; column < matrix[0].length; column++) {
+                totalOfThisRow += matrix[row][column];
+            }
+            if (totalOfThisRow > maxOfRow) {
+                maxOfRow = totalOfThisRow;
+                indexOfMaxRow = row;
+            }
+        }
+        System.out.println("Row " + indexOfMaxRow + " has the maximum sum of " + maxOfRow);
+    }
+}
